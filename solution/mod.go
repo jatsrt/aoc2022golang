@@ -13,6 +13,8 @@ func Solution(ctx context.Context, day int, input []byte) {
 	switch day {
 	case 1:
 		Day01Solution(ctx, day, input)
+	case 2:
+		Day02Solution(ctx, day, input)
 	default:
 		log.Ctx(ctx).Error().Int("day", day).Msg("not yet solved")
 		os.Exit(1)
