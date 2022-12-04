@@ -30,4 +30,11 @@ func Solutions(ctx context.Context) {
 		os.Exit(1)
 	}
 	Day03Solution(ctx, bytes)
+
+	bytes, err = os.ReadFile("./input/day04")
+	if err != nil {
+		log.Ctx(ctx).Error().Err(err).Msg("")
+		os.Exit(1)
+	}
+	Day04Solution(ctx, bytes)
 }
