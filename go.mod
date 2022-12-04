@@ -3,6 +3,7 @@ module github.com/jatsrt/aoc2022
 go 1.19
 
 require (
+	github.com/juliangruber/go-intersect v1.1.0
 	github.com/rs/zerolog v1.28.0
 	github.com/spf13/cobra v1.6.1
 	github.com/thoas/go-funk v0.9.2
