@@ -7,18 +7,27 @@ import (
 	log "github.com/rs/zerolog/log"
 )
 
-func Solution(ctx context.Context, day int, input []byte) {
-	log.Ctx(ctx).Info().Int("day", day).Msg("solving")
+func Solutions(ctx context.Context) {
+	log.Ctx(ctx).Info().Msg("solving")
 
-	switch day {
-	case 1:
-		Day01Solution(ctx, day, input)
-	case 2:
-		Day02Solution(ctx, day, input)
-	case 3:
-		Day03Solution(ctx, day, input)
-	default:
-		log.Ctx(ctx).Error().Int("day", day).Msg("not yet solved")
+	bytes, err := os.ReadFile("./input/day01")
+	if err != nil {
+		log.Ctx(ctx).Error().Err(err).Msg("")
 		os.Exit(1)
 	}
+	Day01Solution(ctx, bytes)
+
+	bytes, err = os.ReadFile("./input/day02")
+	if err != nil {
+		log.Ctx(ctx).Error().Err(err).Msg("")
+		os.Exit(1)
+	}
+	Day02Solution(ctx, bytes)
+
+	bytes, err = os.ReadFile("./input/day03")
+	if err != nil {
+		log.Ctx(ctx).Error().Err(err).Msg("")
+		os.Exit(1)
+	}
+	Day03Solution(ctx, bytes)
 }

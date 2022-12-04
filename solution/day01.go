@@ -10,7 +10,7 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func Day01Solution(ctx context.Context, day int, input []byte) {
+func Day01Solution(ctx context.Context, input []byte) {
 	caloric_values := funk.Map(strings.Split(string(input), "\n\n"), func(x string) int {
 		return funk.SumInt(funk.Map(strings.Split(x, "\n"), func(x string) int {
 			v, _ := strconv.Atoi(x)
@@ -20,7 +20,7 @@ func Day01Solution(ctx context.Context, day int, input []byte) {
 	sort.Ints(caloric_values)
 
 	solution := int64(caloric_values[len(caloric_values)-1])
-	log.Ctx(ctx).Info().Int("part", 1).Int64("solution", solution).Msg("solved")
+	log.Ctx(ctx).Info().Int("part", 1).Int("day", 1).Int64("solution", solution).Msg("solved")
 	solution = int64(funk.SumInt(caloric_values[len(caloric_values)-3:]))
-	log.Ctx(ctx).Info().Int("part", 2).Int64("solution", solution).Msg("solved")
+	log.Ctx(ctx).Info().Int("part", 2).Int("day", 1).Int64("solution", solution).Msg("solved")
 }

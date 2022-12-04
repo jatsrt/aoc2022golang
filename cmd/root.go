@@ -5,12 +5,10 @@ package cmd
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"time"
 
 	"github.com/jatsrt/aoc2022/solution"
-	log "github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
@@ -26,20 +24,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			input, _ := cmd.Flags().GetString("input")
-			if input == "" {
-				log.Ctx(cmd.Context()).Error().Msg("input required")
-				os.Exit(1)
-			}
-			day, _ := cmd.Flags().GetInt("day")
-
-			bytes, err := os.ReadFile(input)
-			if err != nil {
-				log.Ctx(cmd.Context()).Error().Err(err).Msg("")
-				os.Exit(1)
-			}
-
-			solution.Solution(cmd.Context(), day, bytes)
+			solution.Solutions(cmd.Context())
 		},
 	}
 )
@@ -49,11 +34,4 @@ func Execute(ctx context.Context) {
 	if err != nil {
 		os.Exit(1)
 	}
-}
-
-func init() {
-	rootCmd.PersistentFlags().Int("day", currentDay, "The day to run")
-	rootCmd.PersistentFlags().String("input", fmt.Sprintf("./input/day%02d", currentDay), "The input data")
-	rootCmd.MarkFlagRequired("day")
-	rootCmd.MarkFlagRequired("input")
 }

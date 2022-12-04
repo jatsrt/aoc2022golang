@@ -8,7 +8,7 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func Day02Solution(ctx context.Context, day int, input []byte) {
+func Day02Solution(ctx context.Context, input []byte) {
 	strategy := strings.Split(string(input), "\n")
 
 	solution := funk.Reduce(strategy, func(acc int, x string) int {
@@ -33,7 +33,7 @@ func Day02Solution(ctx context.Context, day int, input []byte) {
 		}
 		return acc
 	}, 0).(int)
-	log.Ctx(ctx).Info().Int("part", 1).Int("solution", solution).Msg("solved")
+	log.Ctx(ctx).Info().Int("part", 1).Int("day", 2).Int("solution", solution).Msg("solved")
 
 	solution = funk.Reduce(strategy, func(acc int, x string) int {
 		if x == "A X" {
@@ -57,5 +57,5 @@ func Day02Solution(ctx context.Context, day int, input []byte) {
 		}
 		return acc
 	}, 0).(int)
-	log.Ctx(ctx).Info().Int("part", 2).Int("solution", solution).Msg("solved")
+	log.Ctx(ctx).Info().Int("part", 2).Int("day", 2).Int("solution", solution).Msg("solved")
 }
